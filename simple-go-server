@@ -1,0 +1,8 @@
+FROM golang:1.11-alpine3.7 AS builder
+
+WORKDIR /app
+COPY go-app/main.go .
+ARG CGO_ENABLED=0
+RUN go build -o server .
+
+ENTRYPOINT ["./server"]
